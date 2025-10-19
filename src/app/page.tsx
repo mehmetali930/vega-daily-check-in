@@ -1,24 +1,17 @@
-import { Metadata } from "next";
-import App from "./app";
-import { APP_NAME, APP_DESCRIPTION, APP_OG_IMAGE_URL } from "~/lib/constants";
-import { getMiniAppEmbedMetadata } from "~/lib/utils";
+import { useFarcasterSDK } from '@farcaster/sdk';
+import { useEffect } from 'react';
 
-export const revalidate = 300;
+export default function Page() {
+  const sdk = useFarcasterSDK(); // SDK nesnesi component içinde olmalı
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: APP_NAME,
-    openGraph: {
-      title: APP_NAME,
-      description: APP_DESCRIPTION,
-      images: [APP_OG_IMAGE_URL],
-    },
-    other: {
-      "fc:frame": JSON.stringify(getMiniAppEmbedMetadata()),
-    },
-  };
-}
+  useEffect(() => {
+    sdk.actions.ready(); // Farcaster'a mini-app hazır olduğunu bildir
+  }, []);
 
-export default function Home() {
-  return (<App />);
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '50px' }}>
+      <h1>Vega Daily Check-In</h1>
+      <p>Mini-app’iniz Farcaster üzerinde çalışıyor!</p>
+    </div>
+  );
 }
