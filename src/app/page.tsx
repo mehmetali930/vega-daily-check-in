@@ -1,11 +1,14 @@
-import { useFarcasterSDK } from '@farcaster/sdk';
+"use client";
+
 import { useEffect } from 'react';
+import { sdk } from '@neynar/react';
 
 export default function Page() {
-  const sdk = useFarcasterSDK(); // SDK nesnesi component içinde olmalı
-
   useEffect(() => {
-    sdk.actions.ready(); // Farcaster'a mini-app hazır olduğunu bildir
+    const markReady = async () => {
+      await sdk.actions.ready();
+    };
+    markReady();
   }, []);
 
   return (
@@ -15,3 +18,4 @@ export default function Page() {
     </div>
   );
 }
+
