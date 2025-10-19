@@ -1,0 +1,12 @@
+{
+  "name": "Vega Daily Check-In",
+  "description": "A Farcaster mini app created with Neynar",
+  "url": "https://vega-daily-check-in.vercel.app",
+  "image": "https://vega-daily-check-in.vercel.app/images/feed.png",
+  "splash": "https://vega-daily-check-in.vercel.app/images/splash.png",
+  "launch": {
+    "type": "launch_frame",
+    "name": "Vega Daily Check-In",
+    "url": "https://vega-daily-check-in.vercel.app"
+  }
+}
